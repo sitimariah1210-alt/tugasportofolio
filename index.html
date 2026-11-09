@@ -1,0 +1,228 @@
+!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio Luthfi Hakim — Junior Network Engineer dan siswa kelas 10 TJKT.">
+  <title>Luthfi Hakim | Junior Network Engineer</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #0d1b2d;
+      --panel2: #10243a;
+      --text: #eaf3ff;
+      --muted: #9bb0c8;
+      --cyan: #35d5f2;
+      --blue: #4b8dff;
+      --line: rgba(135, 190, 230, .18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(31, 126, 190, .17), transparent 28rem),
+        linear-gradient(135deg, #07111f 0%, #091827 55%, #07111f 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 90%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(7, 17, 31, .82); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: .5px; font-size: 1.1rem; }
+    .brand span { color: var(--cyan); }
+    .nav-links { display: flex; gap: 26px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--cyan); }
+    .hero { min-height: 660px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 54px; padding: 88px 0; }
+    .eyebrow { color: var(--cyan); text-transform: uppercase; letter-spacing: 2.5px; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.06; letter-spacing: -2px; margin: 18px 0; }
+    h1 span { color: var(--cyan); }
+    .hero p { color: var(--muted); max-width: 590px; font-size: 1.05rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn { padding: 12px 21px; border-radius: 9px; font-weight: 750; display: inline-flex; align-items: center; gap: 9px; transition: .2s; }
+    .btn-primary { color: #04121e; background: linear-gradient(110deg, var(--cyan), #72e8ff); box-shadow: 0 8px 28px rgba(53,213,242,.18); }
+    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-outline { border: 1px solid var(--line); color: var(--text); }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+    .network-card {
+      position: relative; min-height: 390px; border: 1px solid var(--line); border-radius: 24px;
+      background: linear-gradient(145deg, rgba(16,36,58,.95), rgba(8,24,41,.9));
+      display: grid; place-items: center; overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,.28);
+    }
+    .network-card::before, .network-card::after { content:""; position:absolute; border:1px solid rgba(53,213,242,.13); border-radius:50%; width:310px; height:310px; }
+    .network-card::after { width:220px; height:220px; }
+    .network-svg { width: 88%; max-width: 390px; position: relative; z-index: 1; }
+    .node { fill: #0c2940; stroke: #35d5f2; stroke-width: 2.5; }
+    .wire { stroke: #35d5f2; stroke-width: 2; opacity: .72; fill: none; stroke-dasharray: 7 7; animation: dash 12s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -140; } }
+    section { padding: 82px 0; }
+    .section-head { margin-bottom: 34px; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.7px; }
+    .section-head p { color: var(--muted); margin-top: 8px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .card { padding: 27px; border: 1px solid var(--line); border-radius: 16px; background: rgba(13,27,45,.78); }
+    .card h3 { margin-bottom: 10px; font-size: 1.1rem; }
+    .card p { color: var(--muted); }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+    .fact { padding: 15px; background: rgba(53,213,242,.06); border: 1px solid var(--line); border-radius: 11px; }
+    .fact small { color: var(--muted); display: block; }
+    .fact strong { color: var(--cyan); }
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .skill { padding: 22px; border-radius: 14px; border: 1px solid var(--line); background: var(--panel); }
+    .skill .icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .skill p { color: var(--muted); font-size: .92rem; margin-top: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+    .tag { font-size: .82rem; color: #a9eefd; background: rgba(53,213,242,.08); border: 1px solid rgba(53,213,242,.2); padding: 6px 11px; border-radius: 999px; }
+    .project { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .project-card { min-height: 205px; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-label { color: var(--cyan); font-size: .76rem; font-weight: 800; letter-spacing: 1.5px; }
+    .project-card p { margin-top: 8px; }
+    .contact { text-align: center; padding: 55px 25px; border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(130deg, rgba(16,36,58,.95), rgba(10,26,43,.9)); }
+    .contact p { color: var(--muted); max-width: 570px; margin: 12px auto 24px; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); font-size: .85rem; text-align: center; }
+    @media (max-width: 760px) {
+      .nav-links { gap: 13px; font-size: .8rem; }
+      .hero { grid-template-columns: 1fr; padding: 68px 0; gap: 35px; }
+      .network-card { min-height: 300px; }
+      .about-grid, .project { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      nav { align-items: flex-start; flex-direction: column; padding: 15px 0; gap: 8px; }
+      .nav-links { width: 100%; justify-content: space-between; }
+      .skills { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">LH<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#projects">Proyek</a>
+        <a href="#contact">Kontak</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Portfolio • Junior Network Engineer</div>
+        <h1>Halo, saya<br><span>Luthfi Hakim.</span></h1>
+        <p>Siswa kelas 10 jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT) yang tertarik mempelajari infrastruktur jaringan, konfigurasi perangkat, dan teknologi jaringan komputer.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Lihat Portofolio <span>↗</span></a>
+          <a class="btn btn-outline" href="#contact">Hubungi Saya</a>
+        </div>
+      </div>
+      <div class="network-card" aria-label="Ilustrasi topologi jaringan">
+        <svg class="network-svg" viewBox="0 0 400 300" role="img" aria-label="Ilustrasi router yang terhubung ke beberapa komputer">
+          <path class="wire" d="M200 75 L90 145 M200 75 L310 145 M90 145 L90 235 M310 145 L310 235 M90 145 L200 205 M310 145 L200 205"/>
+          <rect class="node" x="155" y="42" width="90" height="54" rx="12"/>
+          <path d="M178 62h44 M184 73h32" stroke="#35d5f2" stroke-width="3" stroke-linecap="round"/>
+          <circle class="node" cx="90" cy="145" r="25"/><circle class="node" cx="310" cy="145" r="25"/>
+          <rect class="node" x="65" y="222" width="50" height="34" rx="5"/><rect class="node" x="285" y="222" width="50" height="34" rx="5"/>
+          <rect class="node" x="175" y="190" width="50" height="34" rx="5"/>
+          <path d="M75 264h30 M295 264h30 M185 232h30" stroke="#35d5f2" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="200" cy="69" r="4" fill="#35d5f2"/>
+        </svg>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Profil singkat</div>
+          <h2>Tentang Saya</h2>
+          <p>Mengenal minat dan perjalanan belajar saya di bidang jaringan komputer.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card">
+            <h3>Calon Network Engineer</h3>
+            <p>Saya sedang membangun dasar pengetahuan di bidang jaringan komputer dan telekomunikasi. Saya senang mempelajari cara perangkat saling terhubung, bagaimana jaringan dikonfigurasi, serta bagaimana melakukan troubleshooting dasar.</p>
+          </div>
+          <div class="card">
+            <h3>Informasi Pendidikan</h3>
+            <p>Fokus pembelajaran saya adalah memahami konsep jaringan, perangkat jaringan, dan praktik konfigurasi secara bertahap.</p>
+            <div class="facts">
+              <div class="fact"><small>Nama</small><strong>Luthfi Hakim</strong></div>
+              <div class="fact"><small>Kelas</small><strong>10 TJKT</strong></div>
+              <div class="fact"><small>Jurusan</small><strong>TJKT</strong></div>
+              <div class="fact"><small>Bidang</small><strong>Networking</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Kompetensi</div>
+          <h2>Minat & Keahlian</h2>
+          <p>Bidang yang sedang saya pelajari dan kembangkan.</p>
+        </div>
+        <div class="skills">
+          <article class="skill"><div class="icon">🌐</div><h3>Dasar Jaringan</h3><p>Memahami konsep LAN, WAN, topologi jaringan, serta model komunikasi jaringan.</p></article>
+          <article class="skill"><div class="icon">🧭</div><h3>IP Addressing</h3><p>Mempelajari IPv4, subnet mask, gateway, dan pengalamatan perangkat.</p></article>
+          <article class="skill"><div class="icon">🖧</div><h3>Perangkat Jaringan</h3><p>Mengenal fungsi router, switch, access point, kabel, dan konektor jaringan.</p></article>
+          <article class="skill"><div class="icon">🛠️</div><h3>Troubleshooting</h3><p>Belajar mengidentifikasi gangguan koneksi dan melakukan pemeriksaan dasar.</p></article>
+          <article class="skill"><div class="icon">🔌</div><h3>Kabel & Koneksi</h3><p>Mempelajari media transmisi, susunan kabel UTP, dan konektivitas perangkat.</p></article>
+          <article class="skill"><div class="icon">💻</div><h3>Simulasi Jaringan</h3><p>Mengenal praktik perancangan jaringan menggunakan tools simulasi.</p></article>
+        </div>
+        <div class="tags">
+          <span class="tag">Networking Fundamentals</span><span class="tag">TCP/IP</span><span class="tag">IPv4</span><span class="tag">LAN</span><span class="tag">Router & Switch</span><span class="tag">Troubleshooting</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Karya & latihan</div>
+          <h2>Proyek Pembelajaran</h2>
+          <p>Contoh proyek latihan yang dapat dikembangkan selama proses belajar.</p>
+        </div>
+        <div class="project">
+          <article class="card project-card">
+            <div><div class="project-label">PROJECT 01 • FUNDAMENTAL</div><h3>Rancangan Topologi LAN</h3><p>Membuat rancangan sederhana koneksi beberapa komputer melalui switch dan memahami alur komunikasi dalam jaringan lokal.</p></div>
+            <div class="tags"><span class="tag">LAN</span><span class="tag">Topologi</span><span class="tag">Switch</span></div>
+          </article>
+          <article class="card project-card">
+            <div><div class="project-label">PROJECT 02 • PRACTICE</div><h3>Konfigurasi IP Address</h3><p>Latihan memberikan alamat IP pada perangkat dan menguji konektivitas menggunakan perintah ping.</p></div>
+            <div class="tags"><span class="tag">IPv4</span><span class="tag">Ping</span><span class="tag">Basic Network</span></div>
+          </article>
+        </div>
+        <p style="color:var(--muted);font-size:.85rem;margin-top:16px;">Catatan: proyek di atas adalah contoh portofolio pembelajaran. Ganti dengan proyek yang benar-benar sudah kamu kerjakan.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <div class="eyebrow">Mari terhubung</div>
+          <h2>Terbuka untuk Belajar & Kolaborasi</h2>
+          <p>Saya ingin terus mengembangkan kemampuan di bidang jaringan komputer. Silakan hubungi saya untuk berbagi ilmu, diskusi, atau kolaborasi.</p>
+          <!-- Ganti alamat email di bawah dengan email milikmu -->
+          <a class="btn btn-primary" href="mailto:emailkamu@example.com">Kirim Email ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Luthfi Hakim • Junior Network Engineer Portfolio</div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
